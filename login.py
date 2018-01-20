@@ -12,4 +12,10 @@ class User:
         """
         the __init__ method is for defining the properties of the created class User
         """
+    def save_user(self):
+        """
+        method saves a new user into the user_list
+        """
+        User.user_list.append(self)
+
 
