@@ -16,6 +16,12 @@ class TestUser(unittest.TestCase):
         self.assertEqual(self.new_user.email, "jamesgkimari@gmail.com")
         self.assertEqual(self.new_user.password, "emmawatson")
 
+    def tearDown(self):
+        """
+        this clears up the user_list after each test case has run
+        """
+        User.user_list = []
+
     def test_save_user(self):
         """
         this test case checks if the user is added into the user_list
