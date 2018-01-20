@@ -7,12 +7,13 @@ class TestUser(unittest.TestCase):
         The setUp method runs before each test
         """
 
-        self.new_user = User("jamesgkimari@gmail.com", "emmawatson")
+        self.new_user = User("jamesgkimari", "jamesgkimari@gmail.com", "emmawatson")
 
     def test_init(self):
         """
         this checks if all the instance variables are instantiated correctly
         """
+        self.assertEqual(self.new_user.username, "jamesgkimari")
         self.assertEqual(self.new_user.email, "jamesgkimari@gmail.com")
         self.assertEqual(self.new_user.password, "emmawatson")
 
@@ -34,7 +35,7 @@ class TestUser(unittest.TestCase):
         this test case checks if a user has been deleted form the user_list
         """
         self.new_user.save_user()
-        test_user = User("testuser@gmail.com", "testuser")
+        test_user = User("testuser", "testuser@gmail.com", "testuser2018")
         test_user.save_user()
         self.new_user.delete_user()
         self.assertEqual(len(User.user_list),1)

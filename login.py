@@ -8,11 +8,11 @@ class User:
     created a list where all new user objects will be stored
     """
 
-    def __init__(self, email, password):
+    def __init__(self, username, email, password):
         """
         the __init__ method is for defining the properties of the created class User
         """
-
+        self.username = username
         self.email = email
         self.password = password
     def save_user(self):
