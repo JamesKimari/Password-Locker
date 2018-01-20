@@ -15,6 +15,7 @@ class User:
         self.username = username
         self.email = email
         self.password = password
+
     def save_user(self):
         """
         method saves a new user into the user_list
@@ -27,5 +28,10 @@ class User:
         """
 
         User.user_list.remove(self)
+
+    
+
+
+        
 
 
