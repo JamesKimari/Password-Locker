@@ -31,12 +31,11 @@ class User:
 
         User.user_list.remove(self)
 
-    def generate_password(self, password):
-        print("How many digits do you want generated?")
+    def generate_password(self, account_password):
         y = input()
         for x in range (y):
-            password = random.randint(1, 10)
-            print(password)
+            account_password = random.randint(1, 10)
+            print(account_password)
 
             
 

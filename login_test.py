@@ -1,5 +1,7 @@
 import unittest
+import random
 from login import User
+
 
 class TestUser(unittest.TestCase):
     def setUp(self):
