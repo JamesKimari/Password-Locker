@@ -21,6 +21,12 @@ class Locked:
         """
         Locked.locked_list.append(self)
 
+    def delete_locked(self):
+        """
+        method to delete locked objects from the locked_list
+        """
+        Locked.locked_list.remove(self)
+
 
         
 

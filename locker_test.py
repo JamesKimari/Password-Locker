@@ -27,6 +27,16 @@ class TestLocked(unittest.TestCase):
         cleans up the locked_list after each test run
         """
         Locked.locked_list = []
-        
+
+    def test_delete_locked(self):
+        """
+        test case to test whether the delete_locked method works
+        """
+        self.new_locked.save_locked()
+        test_locked = Locked("Facebook", "lolest")
+        test_locked.save_locked()
+        self.new_locked.delete_locked()
+        self.assertEqual(len(Locked.locked_list),1)
+
 if __name__ == '__main__':
     unittest.main()
