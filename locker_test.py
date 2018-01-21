@@ -1,4 +1,5 @@
 import unittest
+import pyperclip
 from locker import Locked
 
 class TestLocked(unittest.TestCase):
@@ -73,6 +74,13 @@ class TestLocked(unittest.TestCase):
         """
         self.assertEqual(Locked.display_locked(), Locked.locked_list)
 
-   
+    def test_copy_account_password(self):
+        """
+        test case to check whether the account password is being copied
+        """
+        self.new_locked.save_locked()
+        Locked.copy_account_password("Password Locker")
+        self.assertEqual(self.new_locked.account_password, pyperclip.paste())
+           
 if __name__ == '__main__':
     unittest.main()

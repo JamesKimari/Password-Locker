@@ -1,3 +1,5 @@
+import pyperclip
+
 class Locked:
     """
     creates a class for defining the blueprint of all the locked items
@@ -54,6 +56,11 @@ class Locked:
         method displays all saved locked objects
         """
         return cls.locked_list
+
+    @classmethod
+    def copy_account_password(cls, account_name):
+        copy_password = Locked.find_locked(account_name)
+        pyperclip.copy(copy_password.account_password)
 
 
 
