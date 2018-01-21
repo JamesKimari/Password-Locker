@@ -67,6 +67,12 @@ class TestLocked(unittest.TestCase):
         locked_exists = Locked.locked_exists("Facebook")
         self.assertTrue(locked_exists)
 
+    def test_display_locked(self):
+        """
+        test case to test whether locked objects will be displayed
+        """
+        self.assertEqual(Locked.display_locked(), Locked.locked_list)
+
    
 if __name__ == '__main__':
     unittest.main()

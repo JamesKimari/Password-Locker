@@ -48,6 +48,13 @@ class Locked:
                 return True
         return False
 
+    @classmethod
+    def display_locked(cls):
+        """
+        method displays all saved locked objects
+        """
+        return cls.locked_list
+
 
 
         
