@@ -22,6 +22,11 @@ class TestLocked(unittest.TestCase):
         self.new_locked.save_locked()
         self.assertEqual(len(Locked.locked_list),1)
 
+    def tearDown(self):
+        """
+        cleans up the locked_list after each test run
+        """
+        Locked.locked_list = []
         
 if __name__ == '__main__':
     unittest.main()
