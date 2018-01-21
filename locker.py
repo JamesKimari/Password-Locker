@@ -37,6 +37,17 @@ class Locked:
             if locked.account_name == account_name:
                 return locked
 
+    @classmethod
+    def locked_exists(cls, account_name):
+        """
+        method to check if the locked object exists by passing
+        in the account_name
+        """
+        for locked in cls.locked_list:
+            if locked.account_name == account_name:
+                return True
+        return False
+
 
 
         

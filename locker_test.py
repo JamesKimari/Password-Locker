@@ -57,6 +57,16 @@ class TestLocked(unittest.TestCase):
         found_locked = Locked.find_locked("Facebook")
         self.assertEqual(found_locked.account_name, test_locked.account_name)
 
+    def test_locked_exists(self):
+        """
+        test case to check whether the locked object exists
+        """
+        self.new_locked.save_locked()
+        test_locked = Locked("Facebook", "lolest")
+        test_locked.save_locked()
+        locked_exists = Locked.locked_exists("Facebook")
+        self.assertTrue(locked_exists)
+
    
 if __name__ == '__main__':
     unittest.main()
