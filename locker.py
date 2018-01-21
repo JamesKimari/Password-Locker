@@ -7,12 +7,12 @@ class Locked:
     new object instances of class Locked will be stored here
     """
 
-    def __init__(self, account, account_password):
+    def __init__(self, account_name, account_password):
         """
         it defines the properties of the class locked
         """
 
-        self.account = account
+        self.account_name = account_name
         self.account_password = account_password
 
     def save_locked(self):
@@ -26,6 +26,17 @@ class Locked:
         method to delete locked objects from the locked_list
         """
         Locked.locked_list.remove(self)
+
+    @classmethod
+    def find_locked(cls, account_name):
+        """
+        The method takes in an account_name and returns a locked 
+        object that matches that account_name
+        """
+        for locked in cls.locked_list:
+            if locked.account_name == account_name:
+                return locked
+
 
 
         

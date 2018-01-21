@@ -12,7 +12,7 @@ class TestLocked(unittest.TestCase):
         """
         checks if the instance variables are instantiated correctly
         """
-        self.assertEqual(self.new_locked.account, "Password Locker")
+        self.assertEqual(self.new_locked.account_name, "Password Locker")
         self.assertEqual(self.new_locked.account_password, "emmawatson")
 
     def test_save_locked(self):
@@ -47,8 +47,16 @@ class TestLocked(unittest.TestCase):
         self.new_locked.delete_locked()
         self.assertEqual(len(Locked.locked_list),1)
 
-    # @classmethod
-    # def find_locked(cls, )
+    def test_find_locked(self):
+        """
+        test case to check whether the find_locked method works
+        """
+        self.new_locked.save_locked()
+        test_locked = Locked("Facebook", "lolest")
+        test_locked.save_locked()
+        found_locked = Locked.find_locked("Facebook")
+        self.assertEqual(found_locked.account_name, test_locked.account_name)
 
+   
 if __name__ == '__main__':
     unittest.main()
