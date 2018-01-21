@@ -15,7 +15,7 @@ class Locked:
         self.account = account
         self.account_password = account_password
 
-    def save_locked_items(self):
+    def save_locked(self):
         """
         method for saving the locked_items to the locked_list
         """
