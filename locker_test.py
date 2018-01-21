@@ -28,6 +28,15 @@ class TestLocked(unittest.TestCase):
         """
         Locked.locked_list = []
 
+    def test_save_multiple_locked(self):
+        """
+        test case to check if we can save multiple locked objects
+        """
+        self.new_locked.save_locked()
+        test_locked = Locked("Facebook", "lolest")
+        test_locked.save_locked()
+        self.assertEqual(len(Locked.locked_list),2)
+
     def test_delete_locked(self):
         """
         test case to test whether the delete_locked method works
@@ -37,6 +46,9 @@ class TestLocked(unittest.TestCase):
         test_locked.save_locked()
         self.new_locked.delete_locked()
         self.assertEqual(len(Locked.locked_list),1)
+
+    # @classmethod
+    # def find_locked(cls, )
 
 if __name__ == '__main__':
     unittest.main()
