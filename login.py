@@ -1,3 +1,5 @@
+import random 
+
 class User:
     """
     creates a class user that acts as a blueprint for all object instances of a user
@@ -28,6 +30,16 @@ class User:
         """
 
         User.user_list.remove(self)
+
+    def generate_password(self, password):
+        print("How many digits do you want generated?")
+        y = input()
+        for x in range (y):
+            password = random.randint(1, 10)
+            print(password)
+
+            
+
 
     
 
