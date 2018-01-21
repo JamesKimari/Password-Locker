@@ -24,14 +24,8 @@ class User:
         """
         User.user_list.append(self)
 
-    def delete_user(self):
-        """
-        method for deleting an instance object of class user from the user_list"
-        """
-
-        User.user_list.remove(self)
-
     def generate_password(self, account_password):
+        print("How many digits do you want in your generated password?")
         y = input()
         for x in range (y):
             account_password = random.randint(1, 10)
