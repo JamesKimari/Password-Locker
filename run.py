@@ -77,7 +77,7 @@ def main():
     while True:
         print("""\n*********** ^^^ Welcome to Password Locker ^^^ ***********""")
         print("""*** ^^^ Use the keyword provided below to create a new account ^^^ ***\n
-        signin - create a new account""")
+        signin - create a new account\n""")
         keyword = input().lower()
 
         if keyword == 'signin':
@@ -120,7 +120,7 @@ def main():
 
             else:
                 print(f"You have successfully created a new account!")
-                print("Proceed to login into your account")
+                print("Proceed to ***login*** into your account")
                 print("Username")
                 signin_username = input()
                 print()
@@ -137,8 +137,7 @@ def main():
 
                 print("password")
                 signin_password = input()
-                print()
-                
+                print()                
 
             else: 
                 print(f"You have successfully logged into your account!")
