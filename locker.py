@@ -9,12 +9,13 @@ class Locked:
     new object instances of class Locked will be stored here
     """
 
-    def __init__(self, account_name, account_password):
+    def __init__(self, account_name, username, account_password):
         """
         it defines the properties of the class locked
         """
 
         self.account_name = account_name
+        self.username = username
         self.account_password = account_password
 
     def save_locked(self):
@@ -60,7 +61,7 @@ class Locked:
     @classmethod
     def copy_account_password(cls, account_name):
         copy_password = Locked.find_locked(account_name)
-        pyperclip.copy(copy_password.account_password)
+        pyperclip.copy(copy_password.account_password and copy_password.username)
 
 
 

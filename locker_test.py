@@ -7,13 +7,14 @@ class TestLocked(unittest.TestCase):
         """
         SetUp method to run before each test
         """
-        self.new_locked = Locked("Password Locker", "emmawatson")
+        self.new_locked = Locked("Password Locker", "james kimari", "emmawatson")
 
     def test_init(self):
         """
         checks if the instance variables are instantiated correctly
         """
         self.assertEqual(self.new_locked.account_name, "Password Locker")
+        self.assertEqual(self.new_locked.username, "james kimari")
         self.assertEqual(self.new_locked.account_password, "emmawatson")
 
     def test_save_locked(self):
@@ -34,7 +35,7 @@ class TestLocked(unittest.TestCase):
         test case to check if we can save multiple locked objects
         """
         self.new_locked.save_locked()
-        test_locked = Locked("Facebook", "lolest")
+        test_locked = Locked("Facebook","james kimari", "lolest")
         test_locked.save_locked()
         self.assertEqual(len(Locked.locked_list),2)
 
@@ -43,7 +44,7 @@ class TestLocked(unittest.TestCase):
         test case to test whether the delete_locked method works
         """
         self.new_locked.save_locked()
-        test_locked = Locked("Facebook", "lolest")
+        test_locked = Locked("Facebook","james kimari", "lolest")
         test_locked.save_locked()
         self.new_locked.delete_locked()
         self.assertEqual(len(Locked.locked_list),1)
@@ -53,7 +54,7 @@ class TestLocked(unittest.TestCase):
         test case to check whether the find_locked method works
         """
         self.new_locked.save_locked()
-        test_locked = Locked("Facebook", "lolest")
+        test_locked = Locked("Facebook","james kimari", "lolest")
         test_locked.save_locked()
         found_locked = Locked.find_locked("Facebook")
         self.assertEqual(found_locked.account_name, test_locked.account_name)
@@ -63,7 +64,7 @@ class TestLocked(unittest.TestCase):
         test case to check whether the locked object exists
         """
         self.new_locked.save_locked()
-        test_locked = Locked("Facebook", "lolest")
+        test_locked = Locked("Facebook", "james kimari", "lolest")
         test_locked.save_locked()
         locked_exists = Locked.locked_exists("Facebook")
         self.assertTrue(locked_exists)
@@ -80,7 +81,7 @@ class TestLocked(unittest.TestCase):
         """
         self.new_locked.save_locked()
         Locked.copy_account_password("Password Locker")
-        self.assertEqual(self.new_locked.account_password, pyperclip.paste())
+        self.assertEqual(self.new_locked.account_password and self.new_locked.username, pyperclip.paste())
            
 if __name__ == '__main__':
     unittest.main()
