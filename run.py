@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #python3.7
-from login import User
+from signin import User
 from locker import Locked
 import random
 import pyperclip
@@ -72,14 +72,16 @@ def copy_locked(locked):
     return locked.copy_locked(locked)
 
 def main():
+    global username
+    global password
     while True:
         print("""\n*********** ^^^ Welcome to Password Locker ^^^ ***********""")
         print("""*** ^^^ Use the keywords provided below to navigate ^^^ ***\n
-        login - create a new account
-        signin - sign in into an existing account""")
+        signin - create a new account
+        login - login into an existing account""")
         keyword = input().lower()
 
-        if keyword == 'login':
+        if keyword == 'signin':
             print("Input your desired username")
             username = input()
             print()
@@ -88,6 +90,16 @@ def main():
             email = input()
             print()
 
+            # print("Would you like a password generated for you?")
+            # print("Type the - generate - keyword to have a password generated for you\n")
+
+            # if keyword == 'generate':
+            #     user = username
+            #     generate_password(user)
+
+            # else:
+            #     print("Type a password")
+              
             print("Input a password")
             password = input()
             print()
@@ -106,10 +118,11 @@ def main():
                 print("Confirm your password")
                 confirm_password = input()
                 print()
+                
 
             else:
                 print(f"You have successfully created a new account!")
-                print("Proceed to sign in into your account")
+                print("Proceed to login into your account")
                 print("Username")
                 signin_username = input()
                 print()
@@ -117,7 +130,7 @@ def main():
                 print("password")
                 signin_password = input()
                 print()
-
+               
             while signin_username != username or signin_password != password:
                 print("Your username or password is incorrect. Please try again...")
                 print("username")
@@ -127,14 +140,15 @@ def main():
                 print("password")
                 signin_password = input()
                 print()
+                
 
             else: 
-                print(f"You have successfully signed into your account!")
+                print(f"You have successfully logged into your account!")
                 print("Enjoy our services!")
                 print()
-                break
+                break                
 
-        elif keyword == 'signin':
+        elif keyword == 'login':
             print("Input your username")
             username = input()
             print()
@@ -144,18 +158,17 @@ def main():
             print()
 
             if username and password:
-                print("You have signed in successfully.")
-                break
+                print("You have logged in successfully.")
+                break                            
 
         else:
-            print("Error. Please use one of the two keyword provided.")
-
+            print()                                 
+                                  
     while True:
         print("""**** Use the keywords provided below to navigate through your account **** \n
         create - creating new account details
         display - display all account details 
-        find - find an account
-        delete - delete an account """)
+        find - find an account""")
         keyword = input().lower()
 
         if keyword == 'create':
@@ -171,34 +184,51 @@ def main():
             account_password = input()
             print() 
 
-            save_locked(create_locked(account_name, username, account_password))     
+            save_locked(create_locked(account_name, username, account_password))  
+            print("Account creation successful.\n")   
 
         elif keyword == 'display':
-            print("Here is a list of all your accounts and their passwords\n")
-            for locked in display_locked():
-                print(f'{locked.account_name} {locked.username} {locked.account_password}\n' )
+            if display_locked():
+                print("\nHere is a list of all your accounts and their details\n")
+                for locked in display_locked():
+                    print(f'Account name: {locked.account_name}')
+                    print(f'username: {locked.username}')
+                    print(f'Password: {locked.account_password}')
+                    print()
+            else:
+                print("Sorry... You don't seem to have any saved contacts yet.")
+                print()
+
+        elif keyword == 'find':
+            print("\nEnter the account name to find the account")
+            search_account = input()
+            print()
+            
+            if locked_exists(search_account):
+                search_account = find_locked(search_account)
+                print(f"Account Name: {search_account.account_name}")
+                print(f"Username: {search_account.username}")
+                print(f"Password: {search_account.account_password}")
+                print()
+
+            else: 
+                print("That account does not exist")
+                print()
+
+        # elif keyword == 'delete':
+        #     print("\nEnter the account name to delete it")
+        #     search_account = input()
+        #     print()
+            
+        #     if locked.search_account == locked.username:
+        #         delete_locked(locked)
+        #         print("Account was successfully deleted\n")
+
+        #     else:
+        #         print("Account does not exist\n")
 
         else: 
             print("You don't have any saved account details yet.\n")
-            break
-        
-        # elif keyword == 'find':
-        #     print("Enter the account name to find the account\n")
 
 if __name__ == '__main__':
     main()
-
-             
-
-
-
-    
-
-
-
-
-
-
-
-
-
