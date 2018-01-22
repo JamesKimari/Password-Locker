@@ -76,9 +76,8 @@ def main():
     global password
     while True:
         print("""\n*********** ^^^ Welcome to Password Locker ^^^ ***********""")
-        print("""*** ^^^ Use the keywords provided below to navigate ^^^ ***\n
-        signin - create a new account
-        login - login into an existing account""")
+        print("""*** ^^^ Use the keyword provided below to create a new account ^^^ ***\n
+        signin - create a new account""")
         keyword = input().lower()
 
         if keyword == 'signin':
@@ -117,8 +116,7 @@ def main():
 
                 print("Confirm your password")
                 confirm_password = input()
-                print()
-                
+                print()                
 
             else:
                 print(f"You have successfully created a new account!")
@@ -147,19 +145,6 @@ def main():
                 print("Enjoy our services!")
                 print()
                 break                
-
-        elif keyword == 'login':
-            print("Input your username")
-            username = input()
-            print()
-
-            print("Input the password")
-            password = input()
-            print()
-
-            if username and password:
-                print("You have logged in successfully.")
-                break                            
 
         else:
             print()                                 
