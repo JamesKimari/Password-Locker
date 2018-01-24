@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #python3.7
-from signin import User
+from signup import User
 from locker import Locked
 import random
 import pyperclip
@@ -77,10 +77,10 @@ def main():
     while True:
         print("""\n*********** ^^^ Welcome to Password Locker ^^^ ***********""")
         print("""*** ^^^ Use the keyword provided below to create a new account ^^^ ***\n
-        signin - create a new account\n""")
+        signup - create a new account\n""")
         keyword = input().lower()
 
-        if keyword == 'signin':
+        if keyword == 'signup':
             print("Input your desired username")
             username = input()
             print()
@@ -122,21 +122,21 @@ def main():
                 print(f"You have successfully created a new account!")
                 print("Proceed to ***login*** into your account")
                 print("Username")
-                signin_username = input()
+                signup_username = input()
                 print()
 
                 print("password")
-                signin_password = input()
+                signup_password = input()
                 print()
                
-            while signin_username != username or signin_password != password:
+            while signup_username != username or signup_password != password:
                 print("Your username or password is incorrect. Please try again...")
                 print("username")
-                signin_username = input()
+                signup_username = input()
                 print()
 
                 print("password")
-                signin_password = input()
+                signup_password = input()
                 print()                
 
             else: 
@@ -152,7 +152,8 @@ def main():
         print("""**** Use the keywords provided below to navigate through your account **** \n
         create - creating new account details
         display - display all account details 
-        find - find an account""")
+        find - find an account
+        exit - close the application""")
         keyword = input().lower()
 
         if keyword == 'create':
@@ -169,11 +170,11 @@ def main():
             print() 
 
             save_locked(create_locked(account_name, username, account_password))  
-            print("Account creation successful.\n")   
+            print("Account creation successful...\n")   
 
         elif keyword == 'display':
             if display_locked():
-                print("\nHere is a list of all your accounts and their details\n")
+                print("\nHere is a list of all your accounts and their details...\n")
                 for locked in display_locked():
                     print(f'Account name: {locked.account_name}')
                     print(f'username: {locked.username}')
@@ -184,7 +185,7 @@ def main():
                 print()
 
         elif keyword == 'find':
-            print("\nEnter the account name to find the account")
+            print("\nEnter the **account name** to find the account")
             search_account = input()
             print()
             
@@ -196,7 +197,7 @@ def main():
                 print()
 
             else: 
-                print("That account does not exist")
+                print("That account does not exist!")
                 print()
 
         # elif keyword == 'delete':
@@ -210,6 +211,10 @@ def main():
 
         #     else:
         #         print("Account does not exist\n")
+
+        elif keyword == "exit":
+            print("Closing...")
+            break
 
         else: 
             print("You don't have any saved account details yet.\n")

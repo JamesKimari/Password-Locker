@@ -1,6 +1,6 @@
 import unittest
 import random
-from signin import User
+from signup import User
 
 
 class TestUser(unittest.TestCase):
